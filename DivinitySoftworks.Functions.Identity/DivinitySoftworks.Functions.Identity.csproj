@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+    <!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <!-- Generate ready to run images during publishing to improvement cold starts. -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.5.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Data.DynamoDB" Version="0.1.38" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Web.Functions" Version="0.1.39" />
+    <PackageReference Include="DivinitySoftworks.Core" Version="0.1.10" />
+    <PackageReference Include="OneOf" Version="3.0.271" />
+  </ItemGroup>
+  <!-- 
+    The FrameworkReference is used to reduce the deployment bundle size by not having to include 
+    dependencies like Microsoft.Extensions.DependencyInjection. The Microsoft.AspNetCore.App
+    which is available in the Managed .NET Lambda runtime already includes those assemblies.
+  -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+</Project>
