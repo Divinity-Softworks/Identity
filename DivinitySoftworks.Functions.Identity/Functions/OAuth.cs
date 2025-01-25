@@ -126,17 +126,17 @@ public sealed class OAuth([FromServices] IAuthorizeService authorizeService) : E
                 User? user = await userRepository.ReadAsync(samlResponse.GetObjectId()!);
                 if (user is null) {
                     user = new() {
-                        Identifier = samlResponse.GetObjectId()!,
-                        Firstname = samlResponse.GetFirstname(),
-                        Lastname = samlResponse.GetLastname(),
+                        Identifier = samlResponse.GetObjectId()!.ToUpper(),
+                        FirstName = samlResponse.GetFirstname(),
+                        LastName = samlResponse.GetLastname(),
                         Email = samlResponse.GetEmail() ?? string.Empty,
                     };
                     if (!await userRepository.CreateAsync(user))
                         throw new DataException($"Creating a user has failed!");
                 }
                 else {
-                    user.Firstname = samlResponse.GetFirstname();
-                    user.Lastname = samlResponse.GetLastname();
+                    user.FirstName = samlResponse.GetFirstname();
+                    user.LastName = samlResponse.GetLastname();
                     user.Email = samlResponse.GetEmail() ?? string.Empty;
                     if (!await userRepository.PutAsync(user))
                         throw new DataException($"Updating the user has failed!");
@@ -146,7 +146,7 @@ public sealed class OAuth([FromServices] IAuthorizeService authorizeService) : E
                 OAuthAuthorizationCode oAuthAuthorizationCode = new() {
                     Token = Guid.NewGuid().ToString(),
                     TokenType = "authorization_code",
-                    UserId = user.Identifier,
+                    UserId = user.Identifier.ToUpper(),
                     Expiration = DateTime.UtcNow.AddMinutes(5).ToUnixTimeSeconds(),
                 };
 
@@ -294,7 +294,7 @@ public sealed class OAuth([FromServices] IAuthorizeService authorizeService) : E
         if (user is null)
             return new ErrorResponse(HttpStatusCode.Unauthorized, "invalid_grant", "The user associated with the authorization code, or refresh token, cannot be found.");
 
-        return await tokenGenerator.GenerateAsync(user.Identifier, user.Email, GrantType.AuthorizationCode);
+        return await tokenGenerator.GenerateAsync(user.Identifier.ToUpper(), user.Email, GrantType.AuthorizationCode);
     }
 
     /// <summary>

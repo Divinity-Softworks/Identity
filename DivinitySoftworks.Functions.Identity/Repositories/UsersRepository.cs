@@ -51,12 +51,12 @@ public sealed class UsersRepository(IAmazonDynamoDB amazonDynamoDB) : IUsersRepo
 
     /// <inheritdoc/>
     public Task<User?> ReadAsync(string pk) {
-        return _amazonDynamoDB.GetItemAsync<User?>(_tableName, pk);
+        return _amazonDynamoDB.GetItemAsync<User?>(_tableName, pk.ToUpper());
     }
 
     /// <inheritdoc/>
     public Task<bool> DeleteAsync(string pk) {
-        return _amazonDynamoDB.DeleteItemAsync(_tableName, pk);
+        return _amazonDynamoDB.DeleteItemAsync(_tableName, pk.ToUpper());
     }
 
     /// <inheritdoc/>

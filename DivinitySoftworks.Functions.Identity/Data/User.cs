@@ -10,7 +10,7 @@ public sealed record User {
     /// Gets the partition key for the user, which is the same as the Identifier.
     /// </summary>
     [JsonIgnore]
-    public string PK => Identifier;
+    public string PK => Identifier.ToUpper();
 
     /// <summary>
     /// Gets the unique identifier for the user.
@@ -21,14 +21,14 @@ public sealed record User {
     /// <summary>
     /// Gets the first name of the user.
     /// </summary>
-    [JsonPropertyName("Firstname")]
-    public string? Firstname { get; set; }
+    [JsonPropertyName("FirstName")]
+    public string? FirstName { get; set; }
 
     /// <summary>
     /// Gets the last name of the user.
     /// </summary>
-    [JsonPropertyName("Lastname")]
-    public string? Lastname { get; set; }
+    [JsonPropertyName("LastName")]
+    public string? LastName { get; set; }
 
     /// <summary>
     /// Gets the email address of the user.

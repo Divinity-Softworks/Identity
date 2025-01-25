@@ -30,8 +30,8 @@
     <PackageReference Include="Amazon.Lambda.Core" Version="2.5.0" />
     <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="DivinitySoftworks.AWS.Core.Data.DynamoDB" Version="0.1.38" />
-    <PackageReference Include="DivinitySoftworks.AWS.Core.Web.Functions" Version="0.1.39" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Data.DynamoDB" Version="0.1.43" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Web.Functions" Version="0.1.52" />
     <PackageReference Include="DivinitySoftworks.Core" Version="0.1.10" />
     <PackageReference Include="OneOf" Version="3.0.271" />
   </ItemGroup>
