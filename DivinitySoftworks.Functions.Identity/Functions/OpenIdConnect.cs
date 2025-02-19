@@ -43,9 +43,9 @@ public sealed class OpenIdConnect([FromServices] IAuthorizeService authorizeServ
     /// <param name="request">The API Gateway request.</param>
     /// <param name="openIdConnectService">An instance of the OpenID Connect service.</param>
     /// <returns>An asynchronous task that represents the HTTP result containing the JWKS.</returns>
-    [LambdaFunction(ResourceName = $"{RootResourceName}{nameof(GetJWSKAsync)}")]
+    [LambdaFunction(ResourceName = $"{RootResourceName}{nameof(GetJWKS)}")]
     [HttpApi(LambdaHttpMethod.Get, $"{RootBase}/jwks")]
-    public async Task<IHttpResult> GetJWSKAsync(ILambdaContext context, APIGatewayHttpApiV2ProxyRequest request
+    public async Task<IHttpResult> GetJWKS(ILambdaContext context, APIGatewayHttpApiV2ProxyRequest request
         , [FromServices] IOpenIdConnectService openIdConnectService) {
 
         return await ExecuteAsync(Authorize.AllowAnonymous, context, request,
