@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivinitySoftworks.AWS.Core.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivinitySoftworks.AWS.Core.Data.DynamoDB", "..\DivinitySoftworks.AWS.Core\DivinitySoftworks.AWS.Core.Data.DynamoDB\DivinitySoftworks.AWS.Core.Data.DynamoDB.csproj", "{2B60AB22-B9CF-4F4B-8958-79A58FFC64F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivinitySoftworks.AWS.Core.Net.EventBus", "..\DivinitySoftworks.AWS.Core\DivinitySoftworks.AWS.Core.Net.EventBus\DivinitySoftworks.AWS.Core.Net.EventBus.csproj", "{27F15951-87FF-6883-8B65-A86F9607724A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivinitySoftworks.AWS.Core.Net.Storage", "..\DivinitySoftworks.AWS.Core\DivinitySoftworks.AWS.Core.Net.Storage\DivinitySoftworks.AWS.Core.Net.Storage.csproj", "{DD96F559-25CF-0312-4473-EFF5CC56C65E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivinitySoftworks.Core.Net", "..\DivinitySoftworks.Core\DivinitySoftworks.Core.Net\DivinitySoftworks.Core.Net.csproj", "{BE3153BF-03C0-D048-BF04-B0D9E87F52DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,18 @@ Global
 		{2B60AB22-B9CF-4F4B-8958-79A58FFC64F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B60AB22-B9CF-4F4B-8958-79A58FFC64F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B60AB22-B9CF-4F4B-8958-79A58FFC64F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F15951-87FF-6883-8B65-A86F9607724A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F15951-87FF-6883-8B65-A86F9607724A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F15951-87FF-6883-8B65-A86F9607724A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F15951-87FF-6883-8B65-A86F9607724A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD96F559-25CF-0312-4473-EFF5CC56C65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD96F559-25CF-0312-4473-EFF5CC56C65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD96F559-25CF-0312-4473-EFF5CC56C65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD96F559-25CF-0312-4473-EFF5CC56C65E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3153BF-03C0-D048-BF04-B0D9E87F52DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3153BF-03C0-D048-BF04-B0D9E87F52DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3153BF-03C0-D048-BF04-B0D9E87F52DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3153BF-03C0-D048-BF04-B0D9E87F52DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +72,9 @@ Global
 		{3E305D16-3CFF-4466-A19F-9AB35DC04F6A} = {B5633C36-53F9-457A-BF1E-CA1C1621B3D1}
 		{6AA2CF3F-B64F-4272-92DC-754FC9745B37} = {C5CD7C96-2674-46DD-9CFE-3A4B43914353}
 		{2B60AB22-B9CF-4F4B-8958-79A58FFC64F9} = {C5CD7C96-2674-46DD-9CFE-3A4B43914353}
+		{27F15951-87FF-6883-8B65-A86F9607724A} = {C5CD7C96-2674-46DD-9CFE-3A4B43914353}
+		{DD96F559-25CF-0312-4473-EFF5CC56C65E} = {C5CD7C96-2674-46DD-9CFE-3A4B43914353}
+		{BE3153BF-03C0-D048-BF04-B0D9E87F52DB} = {B5633C36-53F9-457A-BF1E-CA1C1621B3D1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {271F546F-4EDD-4401-87AF-770A10DE0A6A}

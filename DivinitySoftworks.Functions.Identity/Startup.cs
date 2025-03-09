@@ -5,6 +5,7 @@ using DivinitySoftworks.Core.Web.Security;
 using DivinitySoftworks.Functions.Identity.Repositories;
 using DivinitySoftworks.Functions.Identity.Security;
 using DivinitySoftworks.Functions.Identity.Security.OpenIdConnect;
+using DivinitySoftworks.Functions.Identity.Services;
 using DivinitySoftworks.Functions.Identity.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,13 @@ public class Startup {
         else
             services.AddSingleton<IAmazonDynamoDB>(_ => new AmazonDynamoDBClient(RegionEndpoint.EUWest3));
 
+        services.AddSingleton(configuration.GetSection(SecuritySettings.KeyName).Get<SecuritySettings>()
+            ?? throw new InvalidOperationException("Security settings are missing."));
+
+        services.AddS3Bucket(configuration);
+        services.AddSimpleNotificationService(configuration);
+
+
         services.AddSingleton<ICertificatesRepository, CertificatesRepository>();
         services.AddSingleton<IOAuthAuthorizationCodesRepository, OAuthAuthorizationCodesRepository>();
         services.AddSingleton<IOAuthClientsRepository, OAuthClientsRepository>();
@@ -47,6 +55,7 @@ public class Startup {
         services.AddSingleton(configuration.GetSection("Authentication:OpenIdConnect").Get<OpenIdConnectConfiguration>() 
             ?? throw new InvalidOperationException("OpenIdConnect configuration is missing."));
 
+        services.AddSingleton<ISecurityService, SecurityService>();
         services.AddSingleton<IOpenIdConnectService, OpenIdConnectService>();
         services.AddSingleton<ITokenGenerator, TokenGenerator>();
 

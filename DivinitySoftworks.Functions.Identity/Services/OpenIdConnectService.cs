@@ -3,8 +3,9 @@ using DivinitySoftworks.Functions.Identity.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
+using DivinitySoftworks.Functions.Identity.Security.OpenIdConnect;
 
-namespace DivinitySoftworks.Functions.Identity.Security.OpenIdConnect;
+namespace DivinitySoftworks.Functions.Identity.Services;
 
 /// <summary>
 /// Provides functionality for interacting with OpenID Connect configurations,

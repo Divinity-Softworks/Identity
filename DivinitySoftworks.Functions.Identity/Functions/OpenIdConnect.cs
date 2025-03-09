@@ -5,6 +5,7 @@ using Amazon.Lambda.Core;
 using DivinitySoftworks.AWS.Core.Web.Functions;
 using DivinitySoftworks.Core.Web.Security;
 using DivinitySoftworks.Functions.Identity.Security.OpenIdConnect;
+using DivinitySoftworks.Functions.Identity.Services;
 
 using static Amazon.Lambda.Annotations.APIGateway.HttpResults;
 
