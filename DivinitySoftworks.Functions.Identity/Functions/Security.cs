@@ -4,6 +4,7 @@ using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using Amazon.SimpleNotificationService.Model;
 using DivinitySoftworks.AWS.Core.Net.Storage;
+using DivinitySoftworks.AWS.Core.Web.ContentDeliveryNetwork;
 using DivinitySoftworks.AWS.Core.Web.Functions;
 using DivinitySoftworks.Core.Net.EventBus;
 using DivinitySoftworks.Core.Net.Mail;
@@ -11,11 +12,8 @@ using DivinitySoftworks.Core.Web.Security;
 using DivinitySoftworks.Functions.Identity.Security;
 using DivinitySoftworks.Functions.Identity.Services;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Net;
 using System.Net.Mail;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace DS.Functions.Identity;
 
@@ -49,7 +47,8 @@ public sealed class Security([FromServices] IAuthorizeService authorizeService) 
         , [FromServices] IConfiguration configuration
         , [FromServices] IPublisher publisher
         , [FromServices] ISecurityService securityService
-        , [FromServices] IStorageService storageService) {
+        , [FromServices] IStorageService storageService
+        , [FromServices] IContentDeliveryNetworkService contentDeliveryNetworkService) {
 
         try {
             SecurityFileResult securityFileResult = securityService.CreateSecurityFiles();
@@ -79,6 +78,8 @@ public sealed class Security([FromServices] IAuthorizeService authorizeService) 
 
                 await publisher.PublishAsync<EmailTemplateMessage, PublishResponse>(TopicArn, emailMessage);
             }
+
+            await contentDeliveryNetworkService.CreateInvalidationAsync(["/*"], context);
         }
         catch (Exception exception) {
             context.Logger.LogError(exception.Message);

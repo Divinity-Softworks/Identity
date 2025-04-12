@@ -43,6 +43,7 @@ public class Startup {
         services.AddSingleton(configuration.GetSection(SecuritySettings.KeyName).Get<SecuritySettings>()
             ?? throw new InvalidOperationException("Security settings are missing."));
 
+        services.AddCloudFront(configuration);
         services.AddS3Bucket(configuration);
         services.AddSimpleNotificationService(configuration);
 

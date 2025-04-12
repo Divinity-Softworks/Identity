@@ -33,8 +33,9 @@
     <PackageReference Include="DivinitySoftworks.AWS.Core.Data.DynamoDB" Version="0.1.43" />
     <PackageReference Include="DivinitySoftworks.AWS.Core.Net" Version="0.1.50" />
     <PackageReference Include="DivinitySoftworks.AWS.Core.Net.EventBus" Version="0.1.45" />
-    <PackageReference Include="DivinitySoftworks.AWS.Core.Net.Storage" Version="0.1.57" />
-    <PackageReference Include="DivinitySoftworks.AWS.Core.Web.Functions" Version="0.1.55" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Net.Storage" Version="0.1.64" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Web.ContentDeliveryNetwork" Version="0.1.66" />
+    <PackageReference Include="DivinitySoftworks.AWS.Core.Web.Functions" Version="0.1.59" />
     <PackageReference Include="DivinitySoftworks.Core" Version="0.1.10" />
     <PackageReference Include="DivinitySoftworks.Core.Net" Version="0.1.26" />
     <PackageReference Include="OneOf" Version="3.0.271" />
