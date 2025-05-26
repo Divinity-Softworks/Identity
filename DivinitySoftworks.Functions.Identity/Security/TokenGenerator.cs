@@ -62,7 +62,9 @@ public sealed class TokenGenerator : ITokenGenerator {
         if (_credentials is null) {
             Certificate? certificate = await _certificatesRepository.ReadAsync(_openIdConnectConfiguration.Certificate.Thumbprint)
                 ?? throw new KeyNotFoundException($"Certificate was not found for Thumbprint [{_openIdConnectConfiguration.Certificate.Thumbprint}]!");
-            _credentials = new X509SigningCredentials(X509Certificate2.CreateFromPem(certificate.Data, certificate.Data));
+            if (certificate.Expiration.FromUnixTimeSeconds() < DateTime.UtcNow)
+                throw new InvalidOperationException($"Certificate with Thumbprint [{_openIdConnectConfiguration.Certificate.Thumbprint}] is expired or not valid! Please update the certificate.");
+            _credentials = new X509SigningCredentials(X509Certificate2.CreateFromPem(certificate.Data, certificate.Data));            
         }
 
         return new TokenGenerationResult() {
